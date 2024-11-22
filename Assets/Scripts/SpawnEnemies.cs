@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
 public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
@@ -12,7 +9,6 @@ public class SpawnEnemies : MonoBehaviour
     bool onRange;
     Transform player;
     [SerializeField] int health = 2;
-
     void Start()
     {
         // Obtener referencia al jugador
@@ -21,7 +17,6 @@ public class SpawnEnemies : MonoBehaviour
         // Comenzar la corutina para respawnear enemigos
         StartCoroutine(Respawn());
     }
-
     void Update()
     {
         // Verificar si el jugador está en rango
@@ -40,11 +35,8 @@ public class SpawnEnemies : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-
         // Infligir daño al jugador
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -58,7 +50,6 @@ public class SpawnEnemies : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
@@ -66,9 +57,7 @@ public class SpawnEnemies : MonoBehaviour
             health--;
         }
     }
-
     #region Spawn
-
     // Corutina para reaparecer enemigos
     IEnumerator Respawn()
     {
@@ -89,7 +78,5 @@ public class SpawnEnemies : MonoBehaviour
             yield return new WaitForSeconds(spawnTime);
         }
     }
-
     #endregion
-    
 }

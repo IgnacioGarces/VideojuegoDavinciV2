@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifetime);
-        damage = 10;
+        damage = 30;
     }
     void Update()
     {

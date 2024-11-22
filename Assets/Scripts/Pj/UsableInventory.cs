@@ -6,9 +6,13 @@ public class UsableInventory : MonoBehaviour
     private CraftMannager CraftRef;
     [SerializeField] GameObject bombPrefab;
     [SerializeField] Transform bombSpawn;
+    private Health healtRef;
+    public int healtRestore;
     private void Start()
     {
         CraftRef = CraftMannager.instance;
+        healtRef = GameObject.FindAnyObjectByType<Health>();
+        healtRestore = 20;
     }
     void Update()
     {
@@ -32,14 +36,12 @@ public class UsableInventory : MonoBehaviour
             }
         }
     }
-
     void ThrowBomb()
     {
         if (this != null)
         {
             //creo la bomba
             GameObject bomb = Instantiate(bombPrefab, bombSpawn.position, Quaternion.identity);
-            
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0;
             Vector3 direction = (mouseWorldPos - bombSpawn.position).normalized;
@@ -51,15 +53,14 @@ public class UsableInventory : MonoBehaviour
             }
         }
     }
-
     public void UsePotion()
     {
         if (CraftRef == null) return;
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (CraftRef.healthPotions.Count > 0)
+            if (CraftRef.healthPotions.Count > 0 && healtRef.currentHealth <=100)
             {
-                CraftRef.healthPotions.RemoveAt(0);
+                healtRef.RestoreLife(healtRestore);
             }
             else
             {
