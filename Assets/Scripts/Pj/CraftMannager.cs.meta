@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - craftBomb: {fileID: 8300000, guid: 744ffa0776d87ab4aad6e8c70f3813eb, type: 3}
+  - craftPotion: {fileID: 8300000, guid: d0ab2a3950136094686be7f82c2fca02, type: 3}
+  - craftSpecialBullets: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
