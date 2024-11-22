@@ -10,8 +10,13 @@ public class aim : MonoBehaviour
     public float coolDown;
     float lastShot;
     public int shootsLeft;
+    private AudioSource audioSource;
+
+    [SerializeField] AudioClip shootSound;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         InputManager.instance.interactAction += Shoot;
     }
 
@@ -33,7 +38,11 @@ public class aim : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = bulletSpawn.position;
                 bullet.transform.up = (target.transform.position - bulletSpawn.position).normalized;
-            }                     
+            }
+        if (audioSource != null && shootSound != null)
+        {
+            audioSource.PlayOneShot(shootSound);
+        }
     }
    
 

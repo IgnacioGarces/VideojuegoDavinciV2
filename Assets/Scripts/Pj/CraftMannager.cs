@@ -19,6 +19,13 @@ public class CraftMannager : MonoBehaviour
     [SerializeField] public int countBloodToShieldPotion;
     [SerializeField] public int countFireToHShieldPotion;
     public List<int> shieldPotions;
+
+    //Sound
+    [SerializeField] AudioClip craftBomb;
+    [SerializeField] AudioClip craftPotion;
+    [SerializeField] AudioClip craftSpecialBullets;
+
+    private AudioSource audiosource;
     private void Awake()
     {
         if (instance == null)
@@ -35,6 +42,8 @@ public class CraftMannager : MonoBehaviour
     }
     private void Start()
     {
+        audiosource = GetComponent<AudioSource>();
+
         inventoryRef = Inventory.instance;
         //Bombas
         countOilToBomb = 5;
@@ -58,6 +67,12 @@ public class CraftMannager : MonoBehaviour
         if (inventoryRef == null) return;
         if (inventoryRef.GetOilCount() >= countOilToBomb && inventoryRef.GetBloodCount() >= countbloodToBomb && inventoryRef.GetFireCount() >= countfireToBomb)
         {
+            // Reproducir sonido de activación
+            if (audiosource != null && craftBomb != null)
+            {
+                audiosource.PlayOneShot(craftBomb);
+            }
+            
             bombs.Add(1);
             print($"Bombas Creadas: {bombs.Count}");
             inventoryRef.RemoveOil(countOilToBomb);
@@ -77,6 +92,10 @@ public class CraftMannager : MonoBehaviour
         if (inventoryRef == null) return;
         if (inventoryRef.GetOilCount() >= countOilToHealthPotion && inventoryRef.GetBloodCount() >= countBloodToHealthPotion && inventoryRef.GetFireCount() >= countFireToHealthPotion)
         {
+            if (audiosource != null && craftPotion != null)
+            {
+                audiosource.PlayOneShot(craftPotion);
+            }
             healthPotions.Add(1);
             print($"Pociones Creadas: {healthPotions.Count}");
             inventoryRef.RemoveOil(countOilToHealthPotion);
@@ -96,6 +115,10 @@ public class CraftMannager : MonoBehaviour
         if (inventoryRef == null) return;
         if (inventoryRef.GetOilCount() >= countOilToShieldPotion && inventoryRef.GetBloodCount() >= countBloodToShieldPotion && inventoryRef.GetFireCount() >= countFireToHShieldPotion)
         {
+            if (audiosource != null && craftSpecialBullets != null)
+            {
+                audiosource.PlayOneShot(craftSpecialBullets);
+            }
             shieldPotions.Add(1);
             print($"escudos Creados: {shieldPotions.Count}");
             inventoryRef.RemoveOil(countOilToShieldPotion);

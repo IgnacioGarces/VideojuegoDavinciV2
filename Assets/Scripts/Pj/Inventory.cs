@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public List<int> fire;
 
     
+    
     private void Awake()
     {
         if (instance == null)
@@ -18,6 +19,8 @@ public class Inventory : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        
         oil = new List<int>();
         blood = new List<int>();
         fire = new List<int>();

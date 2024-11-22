@@ -3,7 +3,8 @@ guid: 34f14d296f769724e86cb735473a731a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - craftBomb: {fileID: 8300000, guid: 744ffa0776d87ab4aad6e8c70f3813eb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

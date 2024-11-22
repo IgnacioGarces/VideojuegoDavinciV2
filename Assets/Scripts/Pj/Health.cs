@@ -10,6 +10,10 @@ public class Health : MonoBehaviour
     //Variables para el color de danio
     SpriteRenderer spriteRenderer;
     Color originalPlayerColor;
+
+    [SerializeField] AudioClip gameOver;
+
+    private AudioSource audiosource;
     void Start()
     {
         //Actualizo vida actual con vida maxima
@@ -22,7 +26,9 @@ public class Health : MonoBehaviour
             //Guardo el color original del jugador
             originalPlayerColor = spriteRenderer.color;
         }
-        
+
+        audiosource = GetComponent<AudioSource>();
+
     }
     public void TakeDamage(int damage)
     {
@@ -73,6 +79,10 @@ public class Health : MonoBehaviour
         Debug.Log("THE PLAYER HAS DIED");
         if (gameObject != null)
         {
+            if (audiosource != null && gameOver != null)
+            {
+                audiosource.PlayOneShot(gameOver);
+            }
             Destroy(this.gameObject);
             SceneManager.LoadScene(3);
         }

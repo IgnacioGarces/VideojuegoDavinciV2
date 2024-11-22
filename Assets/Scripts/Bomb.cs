@@ -2,13 +2,17 @@ using System.Collections;
 using UnityEngine;
 public class Bomb : MonoBehaviour
 {
-    public float explosionTime = 3f;  // Tiempo antes de la explosión
+    public float explosionTime = 0.3f;  // Tiempo antes de la explosión
     public GameObject explosionEffect;  // Prefab de la explosión 
     public float explosionRadius = 5f;   // Radio de la explosión
     public float gasDamage = 0.2f;
     public LayerMask enemyLayer;  // Filtrar enemigos
+
+
+    
     public void DetonateBomb()
     {
+        
         StartCoroutine(ExplosionCountdown());
     }
     private IEnumerator ExplosionCountdown()
@@ -21,6 +25,7 @@ public class Bomb : MonoBehaviour
         if (explosionEffect != null)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
         }
         // Daño por veneno
         CauseDamageInArea();
