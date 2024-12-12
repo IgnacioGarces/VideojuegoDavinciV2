@@ -1805,6 +1805,9 @@ MonoBehaviour:
   craftBomb: {fileID: 8300000, guid: 744ffa0776d87ab4aad6e8c70f3813eb, type: 3}
   craftPotion: {fileID: 8300000, guid: d0ab2a3950136094686be7f82c2fca02, type: 3}
   craftSpecialBullets: {fileID: 0}
+  craftBombButon: {fileID: 28778724}
+  craftHealthPotion: {fileID: 1310935140}
+  craftSpecialBullet: {fileID: 653127036}
 --- !u!114 &80813729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31036,9 +31039,6 @@ MonoBehaviour:
   bombsCount: {fileID: 1894497827}
   healthPotionCount: {fileID: 368558183}
   bulletsCount: {fileID: 475513317}
-  craftBomb: {fileID: 28778724}
-  craftHealthPotion: {fileID: 1310935140}
-  craftSpecialBullet: {fileID: 653127036}
 --- !u!114 &1301948961
 MonoBehaviour:
   m_ObjectHideFlags: 0
