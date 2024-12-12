@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
 public class UsableInventory : MonoBehaviour
 {
     private CraftMannager CraftRef;
@@ -8,17 +6,23 @@ public class UsableInventory : MonoBehaviour
     [SerializeField] Transform bombSpawn;
     private Health healtRef;
     public int healtRestore;
+    private AudioSource audiosource;
+    [SerializeField] AudioClip usePotion;
+    [SerializeField] AudioClip useBomb;
+    aim refAim;
     private void Start()
     {
         CraftRef = CraftMannager.instance;
         healtRef = GameObject.FindAnyObjectByType<Health>();
         healtRestore = 20;
+        refAim = GameObject.FindAnyObjectByType<aim>();
+        audiosource = GetComponent<AudioSource>();
     }
     void Update()
     {
         UseBomb();
         UsePotion();
-        UseShield();
+        UseSpecialBullets();
     }
     public void UseBomb()
     {
@@ -49,6 +53,7 @@ public class UsableInventory : MonoBehaviour
             Bomb bombScript = bomb.GetComponent<Bomb>();
             if (bombScript != null)
             {
+                audiosource.PlayOneShot(useBomb);
                 bombScript.DetonateBomb();
             }
         }
@@ -60,6 +65,8 @@ public class UsableInventory : MonoBehaviour
         {
             if (CraftRef.healthPotions.Count > 0 && healtRef.currentHealth <=100)
             {
+                CraftRef.healthPotions.RemoveAt(0);
+                audiosource.PlayOneShot(usePotion);
                 healtRef.RestoreLife(healtRestore);
             }
             else
@@ -68,19 +75,16 @@ public class UsableInventory : MonoBehaviour
             }
         }
     }
-    public void UseShield()
+    public void UseSpecialBullets()
     {
         if (CraftRef == null) return;
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (CraftRef.SpecialBullets.Count > 0)
         {
-            if (CraftRef.shieldPotions.Count > 0)
-            {
-                CraftRef.shieldPotions.RemoveAt(0);
-            }
-            else
-            {
-                print("No tenes escudos");
-            }
+            refAim.HAVESPECIALBULLET = true;
+        }
+        else
+        {
+            refAim.HAVESPECIALBULLET = false;
         }
     }
 }

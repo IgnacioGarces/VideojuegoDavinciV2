@@ -3,14 +3,15 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] Transform enemySpawn;
+    [SerializeField] Transform spawnPoint;
     [SerializeField] float spawnTime = 2f;  // Tiempo de espera entre apariciones
-    [SerializeField] int distance = 11;
+    [SerializeField] int distance = 15;
     bool onRange;
     Transform player;
-    [SerializeField] int health = 2;
+    [SerializeField] float health = 240f;
     void Start()
     {
+        //enemySpawn = gameObject.transform.position;
         // Obtener referencia al jugador
         player = GameManager.instance.player.transform;
 
@@ -30,7 +31,7 @@ public class SpawnEnemies : MonoBehaviour
             onRange = false;
         }
 
-        if (health<= 0 )
+        if (health <= 0 )
         {
             Destroy(gameObject);
         }
@@ -52,9 +53,11 @@ public class SpawnEnemies : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Bullet bulletDamage = collision.gameObject.GetComponent<Bullet>();
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            health--;
+            
+            health = health - bulletDamage.damage;
         }
     }
     #region Spawn
@@ -66,12 +69,13 @@ public class SpawnEnemies : MonoBehaviour
             if (onRange)  // Si el jugador está en rango, se genera un enemigo
             {
                 GameObject enemy = Instantiate(enemyPrefab);
-                enemy.transform.position = enemySpawn.position;
+                
+                Vector2 spawnPosition = spawnPoint.position;
 
                 // Posicionar al enemigo de manera aleatoria en el eje X
-                Vector2 enemyMovement = enemy.transform.position;
-                enemyMovement.x = Random.Range(-6, 6);
-                enemy.transform.position = enemyMovement;
+
+                spawnPosition.x += Random.Range(-1, 1);
+                enemy.transform.position = spawnPosition;
             }
 
             // Esperar el tiempo antes de reaparecer otro enemigo

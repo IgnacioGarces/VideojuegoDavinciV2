@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class CraftMannager : MonoBehaviour
 {
     private Inventory inventoryRef;
@@ -14,18 +15,20 @@ public class CraftMannager : MonoBehaviour
     [SerializeField] public int countBloodToHealthPotion;
     [SerializeField] public int countFireToHealthPotion;
     public List <int> healthPotions;
-    //ShieldPotion
-    [SerializeField] public int countOilToShieldPotion;
-    [SerializeField] public int countBloodToShieldPotion;
-    [SerializeField] public int countFireToHShieldPotion;
-    public List<int> shieldPotions;
-
+    //SpecialBullets
+    [SerializeField] public int countOilToSpecialBullets;
+    [SerializeField] public int countBloodToSpecialBullets;
+    [SerializeField] public int countFireToSpecialBullets;
+    public List<int> SpecialBullets;
     //Sound
     [SerializeField] AudioClip craftBomb;
     [SerializeField] AudioClip craftPotion;
     [SerializeField] AudioClip craftSpecialBullets;
-
     private AudioSource audiosource;
+    //Buttons
+    public Button craftBombButon;
+    public Button craftHealthPotion;
+    public Button craftSpecialBullet;
     private void Awake()
     {
         if (instance == null)
@@ -38,7 +41,7 @@ public class CraftMannager : MonoBehaviour
         }
         bombs = new List<int>();
         healthPotions = new List<int>();
-        shieldPotions = new List<int>();
+        SpecialBullets = new List<int>();
     }
     private void Start()
     {
@@ -53,10 +56,14 @@ public class CraftMannager : MonoBehaviour
         countOilToHealthPotion = 0;
         countBloodToHealthPotion = 20;
         countFireToHealthPotion = 0;
-        //Escudos
-        countOilToShieldPotion = 50;
-        countBloodToShieldPotion = 0;
-        countFireToHShieldPotion = 100;
+        //Balas
+        countOilToSpecialBullets = 30;
+        countBloodToSpecialBullets = 0;
+        countFireToSpecialBullets = 30;
+        //Buttons
+        craftBombButon.onClick.AddListener(CraftBomb);
+        craftHealthPotion.onClick.AddListener(CraftHealthPotion);
+        craftSpecialBullet.onClick.AddListener(CraftSpecialBullets);
     }
     private void Update()
     {
@@ -110,27 +117,27 @@ public class CraftMannager : MonoBehaviour
             print($"Fuego requerido {countFireToHealthPotion} / Disponible : {inventoryRef.GetFireCount()}");
         }
     }
-    public void CraftShieldPotion()
+    public void CraftSpecialBullets()
     {
         if (inventoryRef == null) return;
-        if (inventoryRef.GetOilCount() >= countOilToShieldPotion && inventoryRef.GetBloodCount() >= countBloodToShieldPotion && inventoryRef.GetFireCount() >= countFireToHShieldPotion)
+        if (inventoryRef.GetOilCount() >= countOilToSpecialBullets && inventoryRef.GetBloodCount() >= countBloodToSpecialBullets && inventoryRef.GetFireCount() >= countFireToSpecialBullets)
         {
             if (audiosource != null && craftSpecialBullets != null)
             {
                 audiosource.PlayOneShot(craftSpecialBullets);
             }
-            shieldPotions.Add(1);
-            print($"escudos Creados: {shieldPotions.Count}");
-            inventoryRef.RemoveOil(countOilToShieldPotion);
-            inventoryRef.RemoveBlood(countBloodToShieldPotion);
-            inventoryRef.RemoveFire(countFireToHShieldPotion);
+            SpecialBullets.Add(1);
+            print($"escudos Creados: {SpecialBullets.Count}");
+            inventoryRef.RemoveOil(countOilToSpecialBullets);
+            inventoryRef.RemoveBlood(countBloodToSpecialBullets);
+            inventoryRef.RemoveFire(countFireToSpecialBullets);
         }
         else
         {
             print("Materiales insuficientes");
-            print($"Aceite requerido {countOilToShieldPotion} / Disponible : {inventoryRef.GetOilCount()}");
-            print($"Sangre requerida {countBloodToShieldPotion} / Disponible : {inventoryRef.GetBloodCount()}");
-            print($"Fuego requerido {countFireToHShieldPotion} / Disponible : {inventoryRef.GetFireCount()}");
+            print($"Aceite requerido {countOilToSpecialBullets} / Disponible : {inventoryRef.GetOilCount()}");
+            print($"Sangre requerida {countBloodToSpecialBullets} / Disponible : {inventoryRef.GetBloodCount()}");
+            print($"Fuego requerido {countFireToSpecialBullets} / Disponible : {inventoryRef.GetFireCount()}");
         }
     }
     private void GetItems()
@@ -139,11 +146,11 @@ public class CraftMannager : MonoBehaviour
         {
             print($"usted tiene {bombs.Count} bombas.");
             print($"usted tiene {healthPotions.Count} Pociones de salud.");
-            print($"usted tiene {shieldPotions.Count} Pociones de escudo.");
+            print($"usted tiene {SpecialBullets.Count} Pociones de escudo.");
         }
     }
     //GettersRapidos
     public int GETBOMBS{get => bombs.Count; }
     public int GETPOTION{get => healthPotions.Count; }
-    public int GETSHIELDS{get => shieldPotions.Count; }
+    public int GETSPECIALBULLETS{get => SpecialBullets.Count; }
 }

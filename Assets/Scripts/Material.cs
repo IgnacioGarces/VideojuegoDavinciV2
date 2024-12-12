@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.U2D;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
-using UnityEngine.U2D;
-
 public class Material : MonoBehaviour
 {
     public enum MATERIALS

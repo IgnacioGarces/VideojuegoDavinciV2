@@ -8,6 +8,7 @@ public class ManagerMenu : MonoBehaviour
     public Button returnMenuButon2;
     public Button tutorialButon;
     public Button creditsButon;
+    public Button ExitButton;
     public GameObject panelMain;
     public GameObject panelTutorial;
     public GameObject panelCredits;
@@ -18,6 +19,7 @@ public class ManagerMenu : MonoBehaviour
         returnMenuButon2.onClick.AddListener(ReturnButon);
         tutorialButon.onClick.AddListener(TutorialButon);
         creditsButon.onClick.AddListener (CreditsButon);
+        ExitButton.onClick.AddListener(QuitGame);
     }
     private void StartGame()
     {
@@ -40,5 +42,10 @@ public class ManagerMenu : MonoBehaviour
         panelTutorial.SetActive(false);
         panelCredits.SetActive(true);
         panelMain.SetActive(false);
+    }
+    private void QuitGame()
+    {
+        Application.Quit();
+        print("No funciona en Editor");
     }
 }

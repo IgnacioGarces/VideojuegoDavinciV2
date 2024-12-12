@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     //private EnemyHealthBar healthBar;
-    [SerializeField] float hitPoints = 100f;
+    [SerializeField] float hitPoints = 90f;
     [SerializeField] int damage = 10;
     [SerializeField] int speed = 9;
     [SerializeField] float chaseDistance = 5.5f;

@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 150
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.8227806, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 11a0ba5c2c0ff2a4593db6b546f7663a, type: 3}
+  m_Color: {r: 1, g: 0.9810174, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c181c1cac05b546ae2e9d555442bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 6477311140757537287, guid: acf1a88c4817a4a409767be220501e15, type: 3}
   hitPoints: 100
   damage: 10
   speed: 3

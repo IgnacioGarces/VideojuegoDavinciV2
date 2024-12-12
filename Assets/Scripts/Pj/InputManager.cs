@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
     public static InputManager instance;
     private PlayerControllerInputs playerControllerInputs;
     public Action interactAction;
+    public Action pause;
     private void Awake()
     {
         if (instance == null)
@@ -21,10 +22,12 @@ public class InputManager : MonoBehaviour
         playerControllerInputs = new PlayerControllerInputs();
         playerControllerInputs?.Enable();
         playerControllerInputs.Player.Interact.performed += Shoot_performed;
+        playerControllerInputs.Player.Pause.performed += Pause_performed;
     }
     private void OnDisable()
     {
         playerControllerInputs.Player.Interact.performed -= Shoot_performed;
+        playerControllerInputs.Player.Pause.performed -= Pause_performed;
         playerControllerInputs?.Disable();
         playerControllerInputs = null;
     }
@@ -35,5 +38,9 @@ public class InputManager : MonoBehaviour
     public Vector2 GetMovementPj()
     {
         return playerControllerInputs.Player.Move.ReadValue<Vector2>();
+    }
+    private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        pause?.Invoke();
     }
 }

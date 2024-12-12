@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 150
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a61959b2ce13c204badf00b691ea8d0d, type: 3}
+  m_Color: {r: 0.5728907, g: 0.7735849, b: 0.5728907, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 1.5
 --- !u!50 &-5837998617485305783
 Rigidbody2D:
   serializedVersion: 4
@@ -161,10 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed1c297e2149ee48962cb6f99610514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionTime: 3
+  detonationTime: 0.1
+  explotionTime: 3
   explosionEffect: {fileID: 5969469476931759485, guid: 7b11fecfcdfc3c14cb79d494bab953d1, type: 3}
-  explosionRadius: 5
-  gasDamage: 10
+  gasDamage: 100
+  explosionRadius: 1.5
+  explosionRadiusIndicator: {fileID: 5847646179117187352, guid: 3c41145a4aaf5194aa1bb2bf74ad8f9a, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -17,5 +17,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Time.timeScale = 1.0f;
     }
 }

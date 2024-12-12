@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
         {
             oil.Add(count);
         }
-        print($"Conseguiste {count} de Aceite");
+        
     }
     public void AddBlood()
     {
@@ -89,7 +89,7 @@ public class Inventory : MonoBehaviour
         {
             blood.Add(count);
         }
-        print($"Conseguiste {count} de Sangre");
+        
     }
     public void AddFire()
     {
@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
         {
             fire.Add(count);
         }
-        print($"Conseguiste {count} de Fuego");
+        
     }
 
     public int RemoveOil(int necessaryAmount)

@@ -3,10 +3,7 @@ guid: 3fb1eab42b6133a4f9b54349c1fe0e80
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - bombPrefab: {instanceID: 0}
-  - bombSpawn: {instanceID: 0}
-  - activationSound: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
