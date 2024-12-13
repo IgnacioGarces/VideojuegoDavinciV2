@@ -5,18 +5,33 @@ public class aim : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject specialBulletPrefab;
     [SerializeField] Transform bulletSpawn;
-    public float coolDown;
-    float lastShot;
-    public int shootsLeft;
     [SerializeField]private bool haveSpecialBullet;
     private AudioSource audioSource;
     [SerializeField] AudioClip shootSound;
     private CraftMannager CraftRef;
+
+    public float time;
+    public float reloadTime;
+    public int bulletAmount;
+    public int maxBulletAmount = 6;
+
+
     void Start()
     {
         CraftRef = CraftMannager.instance;
         audioSource = GetComponent<AudioSource>();
         InputManager.instance.interactAction += Shoot;
+       /* if (time > reloadTime && bulletAmount > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                bulletAmount--;
+                time = 0;
+            }
+        }else
+        {
+            time += Time.deltaTime;
+        }*/
     }
 
     void Update()
@@ -24,6 +39,8 @@ public class aim : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 fixedMousepos = new Vector3(mousePos.x, mousePos.y, 0);
         target.transform.position = fixedMousepos;
+
+      //  if (input)
     }
     void FixedUpdate()
     {

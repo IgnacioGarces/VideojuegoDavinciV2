@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
     public float explotionTime = 4f;
     public GameObject explosionEffect;  // Prefab de la explosión
     public float gasDamage = 100f;
-    public float explosionRadius = 1.5f;   // Radio de la explosión
+    public static float explosionRadius = 1.5f;   // Radio de la explosión
     [SerializeField] private GameObject explosionRadiusIndicator; // El prefab del indicador del radio de la explosión
     private GameObject explosionEffectIndicator;
 
@@ -91,6 +91,8 @@ public class Bomb : MonoBehaviour
                 }
             }
         }
-    
+
+  //public float EXPLOSIONRAIUDS { set => explosionRadius = value; }
+
 
 }

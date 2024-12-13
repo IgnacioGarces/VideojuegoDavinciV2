@@ -2,7 +2,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Vector2 movVector = Vector2.zero;
-    private int movementVelocity;
+    public float movementVelocity;
     private Rigidbody2D rb;
     //Timer
     [SerializeField] float stunTime;
@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool stunned;
     private void Start()
     {
-        movementVelocity = 10;
+        movementVelocity = 7.5f;
         rb = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate()
