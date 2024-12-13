@@ -5,9 +5,9 @@ public class aim : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject specialBulletPrefab;
     [SerializeField] Transform bulletSpawn;
-    [SerializeField]private bool haveSpecialBullet;
+    [SerializeField] private bool haveSpecialBullet;
     private AudioSource audioSource;
-    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioClip[] shootSound;
     private CraftMannager CraftRef;
 
     public float time;
@@ -51,7 +51,8 @@ public class aim : MonoBehaviour
     {
         if (audioSource != null && shootSound != null)
         {
-            audioSource.PlayOneShot(shootSound);
+            int randomIndex = Random.Range(0, shootSound.Length);
+            audioSource.PlayOneShot(shootSound[randomIndex]);
         }
         if (haveSpecialBullet)
         {

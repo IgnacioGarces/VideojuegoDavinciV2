@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 804596946431025371}
   - component: {fileID: 783400464230914110}
   m_Layer: 0
-  m_Name: speedbuff
+  m_Name: PickUpEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

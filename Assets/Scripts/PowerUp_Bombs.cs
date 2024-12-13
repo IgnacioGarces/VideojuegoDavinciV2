@@ -9,10 +9,22 @@ public class PowerUp_Bombs : MonoBehaviour
     public float multp = 1.1f;
     public float duration = 3f;
 
+    private AudioSource audioSource;
+    [SerializeField] AudioClip pickUp;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            if (audioSource != null && pickUp != null)
+            {
+                audioSource.PlayOneShot(pickUp);
+            }
             Bomb.explosionRadius = Bomb.explosionRadius * multp;
             StartCoroutine(Pickup(other));
         }

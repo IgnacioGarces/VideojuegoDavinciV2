@@ -1809,7 +1809,7 @@ MonoBehaviour:
   SpecialBullets: 
   craftBomb: {fileID: 8300000, guid: 744ffa0776d87ab4aad6e8c70f3813eb, type: 3}
   craftPotion: {fileID: 8300000, guid: d0ab2a3950136094686be7f82c2fca02, type: 3}
-  craftSpecialBullets: {fileID: 0}
+  craftSpecialBullets: {fileID: 8300000, guid: a227da392508c8e4f844e428738b52ad, type: 3}
   craftBombButon: {fileID: 28778724}
   craftHealthPotion: {fileID: 1310935140}
   craftSpecialBullet: {fileID: 653127036}
@@ -1840,6 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a540d199d4bd04eb295207a2a86069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementVelocity: 0
   stunTime: 0
   stunned: 0
 --- !u!50 &80813731
@@ -50803,10 +50804,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 219784730261585223, guid: 4c4e3475996115449a1165d3f14e0bbc, type: 3}
   specialBulletPrefab: {fileID: 1540625219039882140, guid: 9c0a56e8e598e52448adfd3969f7301c, type: 3}
   bulletSpawn: {fileID: 1394961045}
-  coolDown: 0
-  shootsLeft: 0
   haveSpecialBullet: 0
-  shootSound: {fileID: 8300000, guid: 0606a89edf19e3144b1f7b06e5782336, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: dbde26beb4c322c4490c541a395bb388, type: 3}
+  - {fileID: 8300000, guid: a3bbe92016ebd9049ac4a56a90e8a8ff, type: 3}
+  - {fileID: 8300000, guid: 9a64ed50cbc34a540a72c3e003fad665, type: 3}
+  - {fileID: 8300000, guid: a43b1166ee8f7a94d9b341d624323d19, type: 3}
+  time: 0
+  reloadTime: 0
+  bulletAmount: 0
+  maxBulletAmount: 6
 --- !u!1 &2028442504
 GameObject:
   m_ObjectHideFlags: 0
@@ -52386,6 +52393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupEffect: {fileID: 1314187966237666932, guid: d32a165d1c532df469ef6ae128809ee2, type: 3}
   multp: 1.5
+  duration: 3
 --- !u!58 &2109759930
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -52470,7 +52478,7 @@ SpriteRenderer:
   m_Size: {x: 0.48, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2109759932

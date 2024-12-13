@@ -9,10 +9,21 @@ public class powerup : MonoBehaviour
     public float multp = 1.5f;
     public float duration = 3f;
 
+    private AudioSource audioSource;
+    [SerializeField] AudioClip pickUp;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            if (audioSource != null && pickUp != null)
+            {
+                audioSource.PlayOneShot(pickUp);
+            }
           StartCoroutine ( Pickup(other));
         }
     }
